@@ -1,20 +1,21 @@
-let perso1 = {
+let perso1 = { // Définition du perso 1
     name: "Boris",
     hp: 100,
     atk: 40,
     precision: 0.4
 }
 
-let perso2 = {
+let perso2 = { // Définition du perso 2
     name: "Bob",
     hp: 70,
     atk: 20,
     precision: 0.7
 }
 
-console.log(`${perso1.name} a ${perso1.hp} PV, une attaque de ${perso1.atk} et une précision de ${perso1.precision}`)
-console.log(`${perso2.name} a ${perso2.hp} PV, une attaque de ${perso2.atk} et une précision de ${perso2.precision}`)
-function precision(self) {
+console.log(`${perso1.name} a ${perso1.hp} PV, une attaque de ${perso1.atk} et une précision de ${perso1.precision}`) // Annonce des stats du perso 1
+console.log(`${perso2.name} a ${perso2.hp} PV, une attaque de ${perso2.atk} et une précision de ${perso2.precision}`) // Annonce des stats du perso 1
+
+function precision(self) { // Fonction permettant de savoir si le perso peut effectuer son attaque 
     if (Math.random() < self.precision) {
         return true
     } else {
@@ -22,7 +23,7 @@ function precision(self) {
     }
 }
 
-function attack(self, target) {
+function attack(self, target) { // Fonction permettant d'attaquer qui appelle la fonction 'precision' pour savoir si l'attaque passe
     console.log(`${self.name} attaque ${target.name}`)  
     if (precision(self) == true) {
         target.hp -= self.atk 
@@ -33,7 +34,7 @@ function attack(self, target) {
 }
 
 
-while (perso1.hp > 0 && perso2.hp > 0) { 
+while (perso1.hp > 0 && perso2.hp > 0) { // Boucle permettant d'effectuer les attaques a la chaine
     attack(perso1, perso2)
     if (perso2.hp <= 0) {
         console.log(`${perso2.name} est KO`)
@@ -41,7 +42,7 @@ while (perso1.hp > 0 && perso2.hp > 0) {
         break
     }
 
-    attack(perso2, perso1)
+    attack(perso2, perso1) 
     if (perso1.hp <= 0) {
         console.log(`${perso1.name} est KO`)
         console.log(`${perso2.name} remporte la partie`)
